@@ -1,9 +1,9 @@
 /**
 *@author Brennan Price
 *Created 09/28/2020
-*
+*Used to get the experience of controlling an led outside of the final product
 */
-import com.pi4j.io.gpio.*;
+
 public class LedControl {
 //Functions
 
@@ -11,8 +11,5 @@ public class LedControl {
 
 //////MAIN//////
   public static void main(String[] args){
-    GpioController gpio = new GpioFactory.getInstance();
-    GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", Pinstate.HIGH);
-    pin.setShutdownOptions(true, PinState.LOW);
   }
 }
