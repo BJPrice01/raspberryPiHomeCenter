@@ -4,7 +4,7 @@
 *
 */
 
-public class lightControl {
+public class GuiExample {
 //Functions
 
 //Classes

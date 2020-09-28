@@ -4,7 +4,7 @@
 *
 */
 import com.pi4j.io.gpio.*;
-public class ledControl {
+public class LedControl {
 //Functions
 
 //Classes

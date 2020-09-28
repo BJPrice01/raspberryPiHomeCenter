@@ -4,7 +4,7 @@
 *
 */
 
-public class guiExample {
+public class RaspberryPiHomeCenter {
 //Functions
 
 //Classes
