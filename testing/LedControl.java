@@ -3,7 +3,6 @@
 *Created 09/28/2020
 *Used to get the experience of controlling an led outside of the final product
 */
-import java.util.*;
 import com.pi4j.io.gpio.*;
 public class LedControl {
 //Functions
@@ -11,7 +10,7 @@ public class LedControl {
 //Classes
 
 //////MAIN//////
-  public static void main(String[] args){
+  public static void main(String[] args) throws InterruptedException{
     final GpioController gpio = GpioFactory.getInstance();
     final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_22);
     pin.high();
