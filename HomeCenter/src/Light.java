@@ -24,21 +24,21 @@ public class Light implements Serializable{
 
     public void turnOn(){
         try{
-            cmd = "HomeCenter/hs100.sh " + ipAddress + " " + port + " on";
+            cmd = "./hs100.sh " + ipAddress + " " + port + " on";
             pr = Runtime.getRuntime().exec(cmd,env);
         }catch(Exception e){}
     }
 
     public void turnOff(){
         try{
-            cmd = "HomeCenter/hs100.sh " + ipAddress + " " + port + " off";
+            cmd = "./hs100.sh " + ipAddress + " " + port + " off";
             pr = Runtime.getRuntime().exec(cmd,env);
         }catch(Exception e){}
     }
 
     public void toggle(){
         try{
-            cmd = "/home/n3rd/Dropbox/schoolWork/semester3/oborpro/raspberryPiHomeCenter/HomeCenter/hs100.sh " + ipAddress + " " + port + " toggle";
+            cmd = "./hs100.sh " + ipAddress + " " + port + " toggle";
             System.out.println(cmd);
             pr = Runtime.getRuntime().exec(cmd,env);
         }catch(Exception ex){
@@ -48,7 +48,7 @@ public class Light implements Serializable{
 
     public String getStatus(){
         try{
-            cmd = "HomeCenter/hs100.sh " + ipAddress + " " + port + " check";
+            cmd = "./hs100.sh " + ipAddress + " " + port + " check";
             pr = Runtime.getRuntime().exec(cmd,env);
             InputStream is = pr.getInputStream();
             Scanner sc = new Scanner(is);
