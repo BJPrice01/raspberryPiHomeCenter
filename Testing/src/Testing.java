@@ -5,8 +5,13 @@
 */
 
 //import com.pi4j.io.gpio.*;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.Enumeration;
 import java.util.Scanner;
+import java.net.*;
+import java.util.Enumeration;
+import java.util.Collections;
 
 public class Testing {
   /*
@@ -30,10 +35,8 @@ public static void blink() throws InterruptedException{
   gpio.shutdown();
   System.out.println("END");
 }
-*/
-//////MAIN//////
-  public static void main(String[] args){
-    //blink();
+
+public static void runLightCommand(){
     String cmdOn = "./Testing/hs100.sh 192.168.1.3 9999 on";
     String cmdOff = "./Testing/hs100.sh 192.168.1.3 9999 off";
     String cmdCheck = "./hs100.sh 192.168.1.3 9999 check";
@@ -47,5 +50,18 @@ public static void blink() throws InterruptedException{
     }catch(Exception ex){
       ex.printStackTrace();
     }
+}
+*/
+public static boolean pingAddress(String addr) throws IOException, UnknownHostException{
+  InetAddress inetAddr = InetAddress.getByName(addr);
+  return inetAddr.isReachable(3000);
+}
+
+//////MAIN//////
+  public static void main(String[] args) throws IOException, UnknownHostException{
+    //blink();
+    //runLightCommand();
+    boolean reached = pingAddress("192.168.1.12");
+    System.out.println(reached);
   }
 }

@@ -8,8 +8,8 @@ public class LightFileWriter {
 //////MAIN//////
   public static void main(String[] args){
   LightWriter lw = new LightWriter();
-  Light brnLight = new Light("Brennan", "192.168.1.4", "9999");
-  Light othrLight = new Light("Other", "192.168.1.100", "9999");
+  Light brnLight = new Light("Brennan", "192.168.1.201", "9999");
+  Light othrLight = new Light("Snake Heat", "192.168.1.202", "9999");
   ArrayList<Light> lights = new ArrayList<Light>();
   lights.add(brnLight);
   lights.add(othrLight);

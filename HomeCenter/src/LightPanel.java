@@ -23,16 +23,28 @@ public class LightPanel extends DrawingPanel {
         return lw.writeToBinary("lights.bin", lights);
     }
 
-    public boolean displayLightButtons(){
+    public boolean displayLightButtons(int[] dimensions){
         try{
-            for(Light light: lights){
-                JButton btnLight = new JButton(light.getName());
-                btnLight.addActionListener(new ActionListener(){
-                    public void actionPerformed(ActionEvent e){
-                        light.toggle();
-                    }
-                });
-                this.add(btnLight);
+            int lightCount = 0;
+            int rows = dimensions[0];
+            int columns = dimensions[1];
+            int cells = rows*columns;
+            for(int i = 1; i <= cells; i++){
+                if(i < columns || i > cells - columns){
+                    this.add(new DrawingPanel());
+                } else if(i % columns == 1 || i % columns == 0){
+                    this.add(new DrawingPanel());
+                }else{
+                    Light light = lights.get(lightCount);
+                    lightCount = lightCount + 1;
+                    JButton btnLight = new JButton(light.getName());
+                    btnLight.addActionListener(new ActionListener(){
+                        public void actionPerformed(ActionEvent e){
+                            light.toggle();
+                        }
+                    });
+                    this.add(btnLight);
+                }
             }
             return true;
         }catch(Exception ex){
@@ -49,20 +61,20 @@ public class LightPanel extends DrawingPanel {
         int rows, columns;
         int[] dimensions;
         if(length % 5 == 0){
-            columns = 5;
-            rows = length/5;
+            columns = 5 + 2;
+            rows = length/5 + 2;
         }else if(length % 4 == 0){
-            columns = 4;
-            rows = length/4;
+            columns = 4 + 2;
+            rows = length/4 + 2;
         }else if(length % 3 == 0){
-            columns = 3;
-            rows = length/3;
+            columns = 3 + 2;
+            rows = length/3 + 2;
         }else if(length % 2 == 0){
-            columns = 2;
-            rows = length/2;
+            columns = 2 + 2;
+            rows = length/2 + 2;
         }else{
-            columns = 1;
-            rows = length/1;
+            columns = 1 + 2;
+            rows = length/1 + 2;
         }
         dimensions = new int[2];
         dimensions[0] = rows;
@@ -74,6 +86,6 @@ public class LightPanel extends DrawingPanel {
         setLights(lr.readFromBinary("lights.bin"));
         int[] dimensions = getLayoutDimensions(lights.size());
         this.setLayout(new GridLayout(dimensions[0],dimensions[1]));
-        displayLightButtons();
+        displayLightButtons(dimensions);
     }
 }
