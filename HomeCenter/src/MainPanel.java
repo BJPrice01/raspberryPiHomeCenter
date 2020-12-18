@@ -14,7 +14,5 @@ public class MainPanel extends DrawingPanel{
         g.setColor(Color.BLACK);
         g.drawImage(img, 0, 0, null);
         g.drawString("Brennan Price", 835, 560);
-        System.out.println(this.getWidth());
-        System.out.println(this.getHeight());
     }
 }
