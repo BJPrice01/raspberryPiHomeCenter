@@ -10,6 +10,6 @@ public class DrawingPanel extends JPanel{
         g.setColor(Color.LIGHT_GRAY);
     }
     public DrawingPanel(){
-        setBackground(Color.DARK_GRAY);
+        setBackground(new Color(99,99,95));
     }
 }
