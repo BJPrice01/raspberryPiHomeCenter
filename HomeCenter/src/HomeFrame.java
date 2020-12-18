@@ -7,8 +7,12 @@ import java.awt.Container;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-@SuppressWarnings("serial")
 public class HomeFrame extends JFrame{
+  private LightPanel lightPanel;
+  private LocationPanel locationPanel;
+  private BellPanel bellPanel;
+  private MainPanel mainPanel;
+
   public void setLook(String title, int width, int height, boolean undecorated){
     setTitle(title);
     setBounds(0,0,width, height);
@@ -49,22 +53,33 @@ public class HomeFrame extends JFrame{
     displayMainMenu(c);
     }
     
+    private void clearCenterPanel(Container c){
+      try{
+        BorderLayout layout = (BorderLayout)c.getLayout();
+        remove(layout.getLayoutComponent(BorderLayout.CENTER));
+      }catch(Exception ex){}
+    }
+
     public void displayLightMenu(Container c){
+      clearCenterPanel(c);
       LightPanel lightPanel = new LightPanel();
       c.add(lightPanel, BorderLayout.CENTER);
       setVisible(true);
     }
     public void displayLocationMenu(Container c){
+      clearCenterPanel(c);
       LocationPanel locationPanel = new LocationPanel();
       c.add(locationPanel, BorderLayout.CENTER);
       setVisible(true);
     }
     public void displayBellMenu(Container c){
+      clearCenterPanel(c);
       BellPanel bellPanel = new BellPanel();
       c.add(bellPanel, BorderLayout.CENTER);
       setVisible(true);
     }
     public void displayMainMenu(Container c){
+      clearCenterPanel(c);
       MainPanel mainPanel = new MainPanel();
       c.add(mainPanel, BorderLayout.CENTER);
       setVisible(true);
@@ -73,8 +88,9 @@ public class HomeFrame extends JFrame{
 
     //default
     public HomeFrame(){
-      setLook("Home Center", 1024, 600, false);
+      setLook("Home Center", 1024, 600, true);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }
 
     //custom
