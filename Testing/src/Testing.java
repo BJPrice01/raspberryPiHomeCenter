@@ -12,6 +12,8 @@ import java.util.Scanner;
 import java.net.*;
 import java.util.Enumeration;
 import java.util.Collections;
+import java.io.File;
+import javax.sound.sampled.*;
 
 public class Testing {
   /*
@@ -51,17 +53,29 @@ public static void runLightCommand(){
       ex.printStackTrace();
     }
 }
-*/
+
 public static boolean pingAddress(String addr) throws IOException, UnknownHostException{
   InetAddress inetAddr = InetAddress.getByName(addr);
   return inetAddr.isReachable(3000);
 }
+*/
 
 //////MAIN//////
-  public static void main(String[] args) throws IOException, UnknownHostException{
+  public static void main(String[] args){
     //blink();
     //runLightCommand();
-    boolean reached = pingAddress("192.168.1.12");
-    System.out.println(reached);
+    //boolean reached = pingAddress("192.168.1.12");
+    //System.out.println(reached);
+    Clip clip;
+    try{
+      AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("dinnerBell.wav"));
+      clip = AudioSystem.getClip();
+      clip.open(audioInputStream);
+      clip.setFramePosition(0);
+      clip.start();
+      clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }catch(Exception ex){
+      ex.printStackTrace();
+    }
   }
 }
