@@ -1,12 +1,17 @@
 import java.io.File;
-import java.io.IOException;
 import java.awt.GridLayout;
 import javax.sound.sampled.*;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * panel to display bell button
+ */
 public class BellPanel extends DrawingPanel{
+    /**
+     * plays a bell sound
+     */
     public void playDinnerBell(){
         Clip clip;
         try{
@@ -19,7 +24,9 @@ public class BellPanel extends DrawingPanel{
             ex.printStackTrace();
         }
     }
-
+    /**
+     * sets the button on the panel in the center of hte screen
+     */
     public void setButton(){
         for(int i = 0; i < 9; i++){
             if(i == 4){
@@ -35,7 +42,9 @@ public class BellPanel extends DrawingPanel{
             }
         }
     }
-
+    /**
+     * sets up the bell panel
+     */
     public BellPanel(){
         setLayout(new GridLayout(3,3));
         setButton();

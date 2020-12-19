@@ -5,24 +5,43 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.util.ArrayList;
 
+/**
+ * menu to display lights
+ */
 public class LightPanel extends DrawingPanel {
     private ArrayList<Light> lights;
     private LightReader lr = new LightReader();
     private LightWriter lw = new LightWriter();
 
+    /**
+     * returns the lights
+     * @return arraylist of lights
+     */
     public ArrayList<Light> getLights(){
         return lights;
     }
-
+    /**
+     * sets the lights to an arraylist of lights
+     * @param setLights light arraylist to set
+     */
     public void setLights(ArrayList<Light> setLights) {
         lights = setLights;
     }
-
+    /**
+     * adds a light to the arraylist
+     * @param light light to add
+     * @return success or failure
+     */
     public boolean addLight(Light light){
         lights.add(light);
         return lw.writeToBinary("lights.bin", lights);
     }
-
+    /**
+     * puts the buttons into a grid layout
+     * add an extra buffer around the edges for a cleaner look
+     * @param dimensions dimensions of the grid layout
+     * @return success or failure
+     */
     public boolean displayLightButtons(int[] dimensions){
         try{
             int lightCount = 0;
@@ -52,11 +71,18 @@ public class LightPanel extends DrawingPanel {
         }
     }
 
+    /**
+     * paints the menu
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);        
     }
-
+    /**
+     * gets the dimensions of the menu for the grid layout
+     * @param length length of the arraylist of lights
+     * @return an int array with rows and columns
+     */
     private int[] getLayoutDimensions(int length){
         int rows, columns;
         int[] dimensions;
@@ -81,7 +107,9 @@ public class LightPanel extends DrawingPanel {
         dimensions[1] = columns;
         return dimensions;
     }
-
+    /**
+     * constructs the light panel default
+     */
     public LightPanel(){
         setLights(lr.readFromBinary("lights.bin"));
         int[] dimensions = getLayoutDimensions(lights.size());

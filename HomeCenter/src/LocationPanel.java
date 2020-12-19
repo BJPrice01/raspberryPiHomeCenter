@@ -5,12 +5,24 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * displays the menu of location information
+ */
 public class LocationPanel extends DrawingPanel{
     private ArrayList<Person> people;
+    /**
+     * gets the arraylist of people from a file
+     * @param fname name of file to read from
+     * @return arraylist of people
+     */
     public ArrayList<Person> readPeople(String fname){
         PersonReader pr = new PersonReader();
         return pr.readFromBinary(fname);
     }
+    /**
+     * wries all the people to the screen
+     * @param people arraylist of people to show
+     */
     public void listPeople(ArrayList<Person> people){
         try{
             JLabel name;
